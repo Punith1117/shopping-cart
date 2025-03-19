@@ -1,4 +1,4 @@
-function Products({products, cart, isInCart}) {
+function Products({products, cart, isInCart, addToCart, removeFromCart}) {
     return (
         products.map(item => (
             <div className="product" data-testid="product" key={item.id}>
@@ -6,7 +6,7 @@ function Products({products, cart, isInCart}) {
                 <p>{item.title}</p>
                 <p>{item.description}</p>
                 <p>{item.price}</p>
-                { isInCart(item.id, cart) ? <button>Remove From Cart</button> : <button>Add To Cart</button> }
+                { isInCart(item.id, cart) ? <button onClick={() => removeFromCart(item.id, cart)}>Remove From Cart</button> : <button onClick={() => addToCart(item.id, cart)}>Add To Cart</button> }
             </div>
         ))
     )
