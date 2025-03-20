@@ -46,6 +46,11 @@ describe('Cart', () => {
         let button = screen.getAllByText('Remove From Cart')[0]
         expect(button).toBeInTheDocument()
     })
+
+    it('should display total price to pay', () => {
+        let  expectedTotal = cart.reduce((total, product) => total + product.price, 0);
+        expect(screen.getByText(expectedTotal)).toBeInTheDocument()
+    })
 })
 
 describe('Remove-From-Cart button', () => {
