@@ -6,7 +6,7 @@ function Cart({cart, removeFromCart}) {
                 <p>{product.title}</p>
                 <p>{product.description}</p>
                 <p>{product.price}</p>
-                <button onClick={() => removeFromCart()}>Remove From Cart</button>
+                <button onClick={() => removeFromCart(product.id, cart)}>Remove From Cart</button>
             </div>
         ))
     )

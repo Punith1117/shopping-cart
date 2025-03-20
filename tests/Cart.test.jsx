@@ -69,10 +69,18 @@ describe('Remove-From-Cart button', () => {
     beforeEach(() => {
         render(<Cart cart={cart} removeFromCart={removeFromCart}/>)
     })
+
     it('should call removeFromCart function on click', async () => {
         let button = screen.getAllByText('Remove From Cart')[0]
         let user = userEvent.setup()
         await user.click(button)
         expect(removeFromCart).toBeCalledTimes(1)
+    })
+    
+    it('should call removeFromCart function with product id and cart as parameter', async () => {
+        let button = screen.getAllByText('Remove From Cart')[0]
+        let user = userEvent.setup()
+        await user.click(button)
+        expect(removeFromCart).toHaveBeenCalledWith(1, cart)
     })
 })
