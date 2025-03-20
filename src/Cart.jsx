@@ -1,4 +1,4 @@
-function Cart({cart}) {
+function Cart({cart, removeFromCart}) {
     return(
         cart.map(product => (
             <div key={product.id} data-testid="cart-item">
@@ -6,7 +6,7 @@ function Cart({cart}) {
                 <p>{product.title}</p>
                 <p>{product.description}</p>
                 <p>{product.price}</p>
-                <button>Remove From Cart</button>
+                <button onClick={() => removeFromCart()}>Remove From Cart</button>
             </div>
         ))
     )
