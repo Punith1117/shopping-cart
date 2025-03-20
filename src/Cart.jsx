@@ -6,6 +6,7 @@ function Cart({cart}) {
                 <p>{product.title}</p>
                 <p>{product.description}</p>
                 <p>{product.price}</p>
+                <button>Remove From Cart</button>
             </div>
         ))
     )

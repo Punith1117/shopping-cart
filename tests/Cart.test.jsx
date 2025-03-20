@@ -40,4 +40,9 @@ describe('Cart', () => {
         let image = screen.getAllByRole('img', {name: 'product-image'})[0]
         expect(image).toHaveAttribute('src', 'link1')
     })
+
+    it('should display remove-from-cart button', () => {
+        let button = screen.getAllByText('Remove From Cart')[0]
+        expect(button).toBeInTheDocument()
+    })
 })
