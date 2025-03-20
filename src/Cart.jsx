@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Cart({cart, removeFromCart}) {
     let  totalPrice = cart.reduce((total, product) => total + product.price, 0);
 
@@ -16,6 +18,7 @@ function Cart({cart, removeFromCart}) {
                 <p>Total Price:</p>
                 <p>{totalPrice}</p>
             </div>
+            <Link to='/pay'>Pay and Place Order</Link>
         </section>
     )
 }

@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import Cart from "../src/Cart";
 import userEvent from "@testing-library/user-event";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
 
 
 describe('Cart', () => {
@@ -23,7 +24,14 @@ describe('Cart', () => {
     ]
     
     beforeEach(() => {
-        render(<Cart cart={cart}/>)
+        render(
+            <MemoryRouter initialEntries={['/']}>
+                <Routes>
+                    <Route path="/" element={<Cart cart={cart}/>}></Route>
+                    <Route path="/pay"></Route>
+                </Routes>
+            </MemoryRouter>
+        )
     })
     
     it('should display all the products in cart', () => {
@@ -46,10 +54,15 @@ describe('Cart', () => {
         let button = screen.getAllByText('Remove From Cart')[0]
         expect(button).toBeInTheDocument()
     })
-
+    
     it('should display total price to pay', () => {
-        let  expectedTotal = cart.reduce((total, product) => total + product.price, 0);
+        let expectedTotal = cart.reduce((total, product) => total + product.price, 0);
         expect(screen.getByText(expectedTotal)).toBeInTheDocument()
+    })
+    
+    it('should display link to pay and place order', () => {
+        let link = screen.getByRole('link', {name: 'Pay and Place Order'})
+        expect(link).toBeInTheDocument()
     })
 })
 
@@ -71,10 +84,18 @@ describe('Remove-From-Cart button', () => {
         }
     ]
     let removeFromCart = vi.fn()
-    beforeEach(() => {
-        render(<Cart cart={cart} removeFromCart={removeFromCart}/>)
-    })
 
+    beforeEach(() => {
+        render(
+            <MemoryRouter initialEntries={['/']}>
+                <Routes>
+                    <Route path="/" element={<Cart cart={cart} removeFromCart={removeFromCart}/>}></Route>
+                    <Route path="/pay"></Route>
+                </Routes>
+            </MemoryRouter>
+        )
+    })
+    
     it('should call removeFromCart function on click', async () => {
         let button = screen.getAllByText('Remove From Cart')[0]
         let user = userEvent.setup()
