@@ -61,7 +61,7 @@ describe('Products', () => {
 })
 
 describe('Add To Cart button', () => {
-    it('should call addToCart function on click', async () => {
+    it('should call addToCart function on click with product object as parameter', async () => {
         let products = [ {id: 1}]
         let cart = []
         let addToCart = vi.fn()
@@ -69,7 +69,7 @@ describe('Add To Cart button', () => {
         let user = userEvent.setup()
         let addButton = screen.getByRole('button', { name: 'Add To Cart' })
         await user.click(addButton)
-        expect(addToCart).toHaveBeenCalledWith(1, cart)
+        expect(addToCart).toHaveBeenCalledWith({id: 1}, cart)
     })
 })
 
