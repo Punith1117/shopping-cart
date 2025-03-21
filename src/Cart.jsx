@@ -18,7 +18,7 @@ function Cart({cart, removeFromCart}) {
                 <p>Total Price:</p>
                 <p>{totalPrice}</p>
             </div>
-            <Link to='/pay'>Pay and Place Order</Link>
+            <Link to='pay'>Pay and Place Order</Link>
         </section>
     )
 }
