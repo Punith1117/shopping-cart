@@ -17,4 +17,15 @@ describe('Default', () => {
         let catchingLine = screen.getByText('We have everything you need!')
         expect(catchingLine).toBeInTheDocument()
     })
+    it('should display all - electronics, jewelery, women and men\'s categories of products available', () => {
+        let electronics = screen.getByText('electronics')
+        let jewelery = screen.getByText('jewelery')
+        let menClothing = screen.getByText('men\'s clothing')
+        let womenClothing = screen.getByText('women\'s clothing')
+
+        expect(electronics).toBeInTheDocument()
+        expect(jewelery).toBeInTheDocument()
+        expect(menClothing).toBeInTheDocument()
+        expect(womenClothing).toBeInTheDocument()
+    })
 })
