@@ -9,4 +9,10 @@ describe('Home', () => {
     it('should display brand name', () => {
         expect(screen.getByText('Fake Store')).toBeInTheDocument()
     })
+    it('should display details about the brand', () => {
+        expect(screen.getByText('About us')).toBeInTheDocument()
+    })
+    it('should display contact information', () => {
+        expect(screen.getByText('Contact')).toBeInTheDocument()
+    })
 })
