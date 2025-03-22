@@ -15,6 +15,34 @@ describe('App', () => {
               json: () => Promise.resolve({product: { id: 1, title: 'shirt'}}),
             })
         );
+        let products = [
+            {
+                id: 1,
+                imageUrl: 'x',
+                title: 'a',
+                description: 'abc',
+                price: 20
+            },
+            {
+                id: 2,
+                imageUrl: 'x',
+                title: 'a',
+                description: 'abc',
+                price: 20
+            }
+        ]
+        let cart = [
+            {
+                id: 1,
+                imageUrl: 'a',
+                title: 'b',
+                description: 'c',
+                price: 10
+            }
+        ]
+        let isInCart = vi.fn()
+        let addToCart = vi.fn()
+        let removeFromCart = vi.fn()
         render(
             <MemoryRouter initialEntries={['/']}>
                 <Routes>
@@ -22,8 +50,8 @@ describe('App', () => {
                         <Route index element={<Default/>}></Route>
                     </Route>
                     <Route path="/home" element={<Home/>}></Route>
-                    <Route path="/products" element={<Products/>}></Route>
-                    <Route path="/cart" element={<Cart/>}></Route>
+                    <Route path="/products" element={<Products products={products} isInCart={isInCart} addToCart={addToCart} removeFromCart={removeFromCart} />}></Route>
+                    <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} />}></Route>
                 </Routes>
             </MemoryRouter>
         )
@@ -43,5 +71,17 @@ describe('App', () => {
         let user = userEvent.setup()
         await user.click(home)
         expect(screen.getByText('Fake Store')).toBeInTheDocument()
+    })
+    it('should display Products component on clicking Products link', async () => {
+        let productsLink = screen.getByText('Products')
+        let user = userEvent.setup()
+        await user.click(productsLink)
+        expect(screen.getAllByTestId('product')).toHaveLength(2)
+    })
+    it('should display Cart component on clicking Cart link', async () => {
+        let cartLink = screen.getByText('Cart')
+        let user = userEvent.setup()
+        await user.click(cartLink)
+        expect(screen.getAllByTestId('cart-item')).toHaveLength(1)
     })
 })
