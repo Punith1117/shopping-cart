@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import { Outlet } from 'react-router-dom'
 
@@ -30,7 +30,7 @@ function App() {
   }
 
   function removeFromCart(id) {
-    cart.filter(product => product.id != id)
+    setCart(cart.filter(product => product.id != id))
   }
   
   return (
