@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Sidebar from './Sidebar'
 
 function App() {
   const [products, setProducts] = useState(null)
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <>
+      <Sidebar />
     </>
   )
 }

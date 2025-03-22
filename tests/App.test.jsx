@@ -1,16 +1,35 @@
-import { vi, describe, expect, it } from "vitest";
+import { vi, describe, expect, it, beforeEach } from "vitest";
 import App from "../src/App";
-import { render } from "@testing-library/react";
-import { act } from "react";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter, Routes, Route } from "react-router-dom";
+import Products from "../src/Products";
+import Home from "../src/Home";
+import Cart from "../src/Cart";
 
 describe('App', () => {
-    it('should call fetch on render to fetch products from api', () => {
+    beforeEach(() => {
         global.fetch = vi.fn(() =>
             Promise.resolve({
               json: () => Promise.resolve({product: { id: 1, title: 'shirt'}}),
             })
         );
-        render(<App></App>)
+        render(
+            <MemoryRouter initialEntries={['/']}>
+                <Routes>
+                    <Route link="/" element={<App/>}></Route>
+                    <Route link="/home" element={<Home/>}></Route>
+                    <Route link="/products" element={<Products/>}></Route>
+                    <Route link="/cart" element={<Cart/>}></Route>
+                </Routes>
+                <App />
+            </MemoryRouter>
+        )
+    })
+
+    it('should call fetch on render to fetch products from api', () => {
         expect(fetch).toHaveBeenCalledTimes(1)
+    })
+    it('should have sidebar component', () => {
+        expect(screen.getByRole('link', {name: 'Home'})).toBeInTheDocument()
     })
 })
