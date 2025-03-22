@@ -16,12 +16,11 @@ describe('App', () => {
         render(
             <MemoryRouter initialEntries={['/']}>
                 <Routes>
-                    <Route link="/" element={<App/>}></Route>
-                    <Route link="/home" element={<Home/>}></Route>
-                    <Route link="/products" element={<Products/>}></Route>
-                    <Route link="/cart" element={<Cart/>}></Route>
+                    <Route path="/" element={<App/>}></Route>
+                    <Route path="/home" element={<Home/>}></Route>
+                    <Route path="/products" element={<Products/>}></Route>
+                    <Route path="/cart" element={<Cart/>}></Route>
                 </Routes>
-                <App />
             </MemoryRouter>
         )
     })
