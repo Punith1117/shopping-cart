@@ -6,6 +6,7 @@ import Products from "../src/Products";
 import Home from "../src/Home";
 import Cart from "../src/Cart";
 import Default from "../src/Default";
+import userEvent from "@testing-library/user-event";
 
 describe('App', () => {
     beforeEach(() => {
@@ -36,5 +37,11 @@ describe('App', () => {
     })
     it('should display Default component as child component', () => {
         expect(screen.getByText('We have everything you need!')).toBeInTheDocument()
+    })
+    it('should display Home component on clicking Home link', async () => {
+        let home = screen.getByText('Home')
+        let user = userEvent.setup()
+        await user.click(home)
+        expect(screen.getByText('Fake Store')).toBeInTheDocument()
     })
 })
