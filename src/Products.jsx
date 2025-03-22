@@ -6,7 +6,7 @@ function Products({products, cart, isInCart, addToCart, removeFromCart}) {
                 <p>{item.title}</p>
                 <p>{item.description}</p>
                 <p>{item.price}</p>
-                { isInCart(item.id, cart) ? <button onClick={() => removeFromCart(item.id, cart)}>Remove From Cart</button> : <button onClick={() => addToCart(item, cart)}>Add To Cart</button> }
+                { isInCart(item.id) ? <button onClick={() => removeFromCart(item.id)}>Remove From Cart</button> : <button onClick={() => addToCart(item)}>Add To Cart</button> }
             </div>
         ))
     )

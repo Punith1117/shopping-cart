@@ -4,8 +4,8 @@ import Products from "../src/Products";
 import userEvent from "@testing-library/user-event";
 
 let isInCart = vi.fn(
-    (id, cart) => {
-        if (cart == null || cart == undefined) return undefined
+    (id) => {
+        let cart = []
         if (cart.length == 0) return false
         for(let item of cart) {
             if (item.id == id) return true
@@ -47,6 +47,14 @@ describe('Products', () => {
     it('should display a button to add the product to cart if the product is not in the cart', () => {
         let products = [ {id: 1} ]
         let cart = []
+        let isInCart = vi.fn(
+            (id) => {
+                let cart = []
+                if (cart.length == 0) return false
+                for(let item of cart) {
+                    if (item.id == id) return true
+                }
+        })
         render(<Products products={products} cart={cart} isInCart={isInCart} />)
         let addToCart = screen.getByRole('button', { name: 'Add To Cart' })
         expect(addToCart).toBeInTheDocument()
@@ -54,6 +62,14 @@ describe('Products', () => {
     it('should display a button to remove the product from cart if the product is in the cart', () => {
         let products = [ {id: 1} ]
         let cart = [ {id: 1} ]
+        let isInCart = vi.fn(
+            (id) => {
+                let cart = [{id: 1}]
+                if (cart.length == 0) return false
+                for(let item of cart) {
+                    if (item.id == id) return true
+                }
+        })
         render(<Products products={products} cart={cart} isInCart={isInCart} />)
         let removeFromCart = screen.getByRole('button', { name: 'Remove From Cart' })
         expect(removeFromCart).toBeInTheDocument()
@@ -69,7 +85,7 @@ describe('Add To Cart button', () => {
         let user = userEvent.setup()
         let addButton = screen.getByRole('button', { name: 'Add To Cart' })
         await user.click(addButton)
-        expect(addToCart).toHaveBeenCalledWith({id: 1}, cart)
+        expect(addToCart).toHaveBeenCalledWith({id: 1})
     })
 })
 
@@ -77,11 +93,19 @@ describe('Remove From Cart button', () => {
     it('should call removeFromCart function on click', async () => {
         let products = [ {id: 2}]
         let cart = [ {id: 2} ]
+        let isInCart = vi.fn(
+            (id) => {
+                let cart = [{id: 2}]
+                if (cart.length == 0) return false
+                for(let item of cart) {
+                    if (item.id == id) return true
+                }
+        })
         let removeFromCart = vi.fn()
         render(<Products products={products} cart={cart} isInCart={isInCart} removeFromCart={removeFromCart} />)
         let user = userEvent.setup()
         let removeButton = screen.getByRole('button', { name: 'Remove From Cart' })
         await user.click(removeButton)
-        expect(removeFromCart).toHaveBeenCalledWith(2, cart)
+        expect(removeFromCart).toHaveBeenCalledWith(2)
     })
 })

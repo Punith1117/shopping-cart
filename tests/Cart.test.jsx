@@ -107,6 +107,6 @@ describe('Remove-From-Cart button', () => {
         let button = screen.getAllByText('Remove From Cart')[0]
         let user = userEvent.setup()
         await user.click(button)
-        expect(removeFromCart).toHaveBeenCalledWith(1, cart)
+        expect(removeFromCart).toHaveBeenCalledWith(1)
     })
 })
