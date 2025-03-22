@@ -5,6 +5,7 @@ import { MemoryRouter, Routes, Route } from "react-router-dom";
 import Products from "../src/Products";
 import Home from "../src/Home";
 import Cart from "../src/Cart";
+import Default from "../src/Default";
 
 describe('App', () => {
     beforeEach(() => {
@@ -16,7 +17,9 @@ describe('App', () => {
         render(
             <MemoryRouter initialEntries={['/']}>
                 <Routes>
-                    <Route path="/" element={<App/>}></Route>
+                    <Route path="/" element={<App/>}>
+                        <Route index element={<Default/>}></Route>
+                    </Route>
                     <Route path="/home" element={<Home/>}></Route>
                     <Route path="/products" element={<Products/>}></Route>
                     <Route path="/cart" element={<Cart/>}></Route>
@@ -30,5 +33,8 @@ describe('App', () => {
     })
     it('should have sidebar component', () => {
         expect(screen.getByRole('link', {name: 'Home'})).toBeInTheDocument()
+    })
+    it('should display Default component as child component', () => {
+        expect(screen.getByText('We have everything you need!')).toBeInTheDocument()
     })
 })
