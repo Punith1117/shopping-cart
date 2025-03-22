@@ -46,7 +46,6 @@ describe('Products', () => {
     })
     it('should display a button to add the product to cart if the product is not in the cart', () => {
         let products = [ {id: 1} ]
-        let cart = []
         let isInCart = vi.fn(
             (id) => {
                 let cart = []
@@ -55,13 +54,12 @@ describe('Products', () => {
                     if (item.id == id) return true
                 }
         })
-        render(<Products products={products} cart={cart} isInCart={isInCart} />)
+        render(<Products products={products} isInCart={isInCart} />)
         let addToCart = screen.getByRole('button', { name: 'Add To Cart' })
         expect(addToCart).toBeInTheDocument()
     })
     it('should display a button to remove the product from cart if the product is in the cart', () => {
         let products = [ {id: 1} ]
-        let cart = [ {id: 1} ]
         let isInCart = vi.fn(
             (id) => {
                 let cart = [{id: 1}]
@@ -70,7 +68,7 @@ describe('Products', () => {
                     if (item.id == id) return true
                 }
         })
-        render(<Products products={products} cart={cart} isInCart={isInCart} />)
+        render(<Products products={products} isInCart={isInCart} />)
         let removeFromCart = screen.getByRole('button', { name: 'Remove From Cart' })
         expect(removeFromCart).toBeInTheDocument()
     })
@@ -79,9 +77,8 @@ describe('Products', () => {
 describe('Add To Cart button', () => {
     it('should call addToCart function on click with product object as parameter', async () => {
         let products = [ {id: 1}]
-        let cart = []
         let addToCart = vi.fn()
-        render(<Products products={products} cart={cart} isInCart={isInCart} addToCart={addToCart} />)
+        render(<Products products={products} isInCart={isInCart} addToCart={addToCart} />)
         let user = userEvent.setup()
         let addButton = screen.getByRole('button', { name: 'Add To Cart' })
         await user.click(addButton)
@@ -92,7 +89,6 @@ describe('Add To Cart button', () => {
 describe('Remove From Cart button', () => {
     it('should call removeFromCart function on click', async () => {
         let products = [ {id: 2}]
-        let cart = [ {id: 2} ]
         let isInCart = vi.fn(
             (id) => {
                 let cart = [{id: 2}]
@@ -102,7 +98,7 @@ describe('Remove From Cart button', () => {
                 }
         })
         let removeFromCart = vi.fn()
-        render(<Products products={products} cart={cart} isInCart={isInCart} removeFromCart={removeFromCart} />)
+        render(<Products products={products} isInCart={isInCart} removeFromCart={removeFromCart} />)
         let user = userEvent.setup()
         let removeButton = screen.getByRole('button', { name: 'Remove From Cart' })
         await user.click(removeButton)
