@@ -4,30 +4,42 @@ import Cart from "../src/Cart";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 
+let cart = [
+    {
+        id: 1,
+        title: 'a',
+        description: 'aa',
+        price: 1,
+        image: 'link1'
+    }, 
+    {
+        id: 2,
+        title: 'b',
+        description: 'bb',
+        price: 2,
+        image: 'link2'
+    }
+]
 
-describe('Cart', () => {
-    let cart = [
-        {
-            id: 1,
-            title: 'a',
-            description: 'aa',
-            price: 1,
-            imageUrl: 'link1'
-        }, 
-        {
-            id: 2,
-            title: 'b',
-            description: 'bb',
-            price: 2,
-            imageUrl: 'link2'
-        }
-    ]
-    
+let removeFromCart = vi.fn()
+
+vi.mock('react-router-dom',  async (importOriginal) => {
+    const actual = await importOriginal();
+    return {
+        ...actual,
+        useOutletContext: () => ({
+            cart: cart,
+            removeFromCart: removeFromCart
+        })
+    }
+})
+
+describe('Cart', () => {    
     beforeEach(() => {
         render(
             <MemoryRouter initialEntries={['/']}>
                 <Routes>
-                    <Route path="/" element={<Cart cart={cart}/>}></Route>
+                    <Route path="/" element={<Cart />}></Route>
                     <Route path="/pay"></Route>
                 </Routes>
             </MemoryRouter>
@@ -67,29 +79,11 @@ describe('Cart', () => {
 })
 
 describe('Remove-From-Cart button', () => {
-    let cart = [
-        {
-            id: 1,
-            title: 'a',
-            description: 'aa',
-            price: 1,
-            imageUrl: 'link1'
-        }, 
-        {
-            id: 2,
-            title: 'b',
-            description: 'bb',
-            price: 2,
-            imageUrl: 'link2'
-        }
-    ]
-    let removeFromCart = vi.fn()
-
     beforeEach(() => {
         render(
             <MemoryRouter initialEntries={['/']}>
                 <Routes>
-                    <Route path="/" element={<Cart cart={cart} removeFromCart={removeFromCart}/>}></Route>
+                    <Route path="/" element={<Cart />}></Route>
                     <Route path="/pay"></Route>
                 </Routes>
             </MemoryRouter>
