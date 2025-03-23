@@ -1,4 +1,7 @@
-function Products({products, isInCart, addToCart, removeFromCart}) {
+import { useOutletContext } from "react-router-dom"
+
+function Products() {
+    let {products, isInCart, addToCart, removeFromCart} = useOutletContext()
     return (
         (products == null) ? (
             <p>loading</p>
@@ -7,7 +10,7 @@ function Products({products, isInCart, addToCart, removeFromCart}) {
             {
                 products.map(item => (
                     <div className="product" data-testid="product" key={item.id}>
-                        <img src={item.imageUrl} alt="product-image" data-testid='product-image' />
+                        <img src={item.image} alt="product-image" data-testid='product-image' />
                         <p>{item.title}</p>
                         <p>{item.description}</p>
                         <p>{item.price}</p>
