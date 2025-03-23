@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom"
 function Sidebar() {
     return (
         <section className="sidebar">
-            <NavLink to={'home'} activeClassName="active-tab">Home</NavLink>
-            <NavLink to={'products'} activeClassName="active-tab">Products</NavLink>
-            <NavLink to={'cart'} activeClassName="active-tab">Cart</NavLink>
+            <NavLink to={'home'} className={({ isActive }) => (isActive ? 'active-tab' : '')}>Home</NavLink>
+            <NavLink to={'products'} className={({ isActive }) => (isActive ? 'active-tab' : '')}>Products</NavLink>
+            <NavLink to={'cart'} className={({ isActive }) => (isActive ? 'active-tab' : '')}>Cart</NavLink>
         </section>
     )
 }
