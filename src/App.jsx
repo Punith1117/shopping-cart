@@ -16,17 +16,11 @@ function App() {
   }, [])
   
   function isInCart(id) {
-    cart.map(product => {
-      if(id == product.id) return true
-    })
-    return false
+    return cart.some(product => product.id == id)
   }
 
   function addToCart(product) {
-    setCart([
-      ...cart,
-      product
-    ])
+    setCart((prevCart) => [...prevCart,product])
   }
 
   function removeFromCart(id) {
@@ -36,7 +30,7 @@ function App() {
   return (
     <>
       <Sidebar />
-      <Outlet products={products} cart={cart} isInCart={isInCart} addToCart={addToCart} removeFromCart={removeFromCart} />
+      <Outlet context={{products, cart, isInCart, addToCart, removeFromCart}} />
     </>
   )
 }
