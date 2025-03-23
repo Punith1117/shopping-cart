@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom"
+import { StyledSidebar } from "./styles/Sidebar.style"
 
 function Sidebar() {
     return (
-        <section className="sidebar">
+        <StyledSidebar>
             <NavLink to={'home'} className={({ isActive }) => (isActive ? 'active-tab' : '')}>Home</NavLink>
             <NavLink to={'products'} className={({ isActive }) => (isActive ? 'active-tab' : '')}>Products</NavLink>
             <NavLink to={'cart'} className={({ isActive }) => (isActive ? 'active-tab' : '')}>Cart</NavLink>
-        </section>
+        </StyledSidebar>
     )
 }
 
