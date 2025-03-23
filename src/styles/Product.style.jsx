@@ -26,15 +26,9 @@ export const StyledProduct = styled.div`
     }
     .add {
         background-color: #279227;
-        &:hover {
-            background-color: #1f6b1f;
-        }
     }
     .remove {
         background-color: #db5c5c;
-        &:hover {
-            background-color: #db5c5c;
-        }
     }
     button {
         font-size: 1rem;
@@ -46,6 +40,7 @@ export const StyledProduct = styled.div`
 
         &:hover {
             cursor: pointer;
+            filter: brightness(0.7);
         }
     }
 `
