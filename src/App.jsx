@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import { Outlet } from 'react-router-dom'
+import { StyledApp } from './styles/App.style'
 
 function App() {
   const [products, setProducts] = useState(null)
@@ -26,12 +27,12 @@ function App() {
   function removeFromCart(id) {
     setCart(cart.filter(product => product.id != id))
   }
-  
+
   return (
-    <>
+    <StyledApp>
       <Sidebar />
       <Outlet context={{products, cart, isInCart, addToCart, removeFromCart}} />
-    </>
+    </StyledApp>
   )
 }
 
