@@ -3,11 +3,13 @@ import Default from "./Default";
 import Home from "./Home";
 import Products from "./Products";
 import Cart from "./Cart";
+import ErrorPage from "./ErrorPage";
 
 const routes = [
     {
         path: "/",
         element: <App />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
