@@ -23,4 +23,8 @@ export const StyledErrorPage = styled.section`
         animation-direction: alternate;
         animation-timing-function: cubic-bezier(1, 0, 0, 1);
     }
+
+    @media (max-width: 700px) {
+        padding: 1rem;
+    }
 `

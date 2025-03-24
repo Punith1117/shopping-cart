@@ -27,6 +27,20 @@ export const StyledDefault = styled.section`
             }
         }
     }
+
+    @media (max-width: 800px) {
+        .wrapper {
+            padding: 1rem;
+            .catching-line {
+                font-size: 1.5rem;
+            }
+            .categories {
+                font-size: 1.5rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+    }
 `
 
 export const StyledLink = styled.div`
@@ -45,6 +59,14 @@ export const StyledLink = styled.div`
         box-shadow: 5px 5px 10px white;
         &:hover {
             filter: brightness(1.2);
+        }
+    }
+
+    @media (max-width: 700px) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        a {
+            font-size: 1.5rem;
         }
     }
 `
