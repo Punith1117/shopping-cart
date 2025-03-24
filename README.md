@@ -3,6 +3,8 @@ Project17 in The Odin Project
 
 ### This is a Single Page Application (SPA) shopping cart built with React and React Router DOM. The project is styled using Styled-components and tested with Vitest and React Testing Library. It is deployed on Netlify.
 
+## [Try it out now](https://shopping-cart-punith1117.netlify.app)
+
 ## Features 🚀
 
 - Routing with React Router DOM
