@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
+import { StyledDefault, StyledLink } from "./styles/Default.style"
 
 function Default() {
     return (
-        <section className="default">
+        <StyledDefault className="default">
             <div className="wrapper">
                 <div className="catching-line">We have everything you need!</div>
                 <div className="categories">
@@ -12,8 +13,10 @@ function Default() {
                     <span>women's clothing</span>
                 </div>
             </div>
-            <Link to={'products'}>Shop Now</Link>
-        </section>
+            <StyledLink>
+                <Link to={'products'}>Shop Now</Link>
+            </StyledLink>
+        </StyledDefault>
     )
 }
 
