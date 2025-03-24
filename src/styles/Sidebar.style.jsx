@@ -25,5 +25,6 @@ export const StyledSidebar = styled.section`
     @media (max-width: 700px) {
         flex-direction: row;
         height: fit-content;
+        font-size: 1.5rem;
     }
 `
