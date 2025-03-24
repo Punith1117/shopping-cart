@@ -6,6 +6,13 @@ export const StyledProducts = styled.section`
     gap: 10px;
     padding: 4rem;
     background-color: #93e6ff;
+
+    @media (max-width: 700px) {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 1rem;
+    }
 `
 export const Loading = styled.p`
     display: flex;

@@ -43,4 +43,20 @@ export const StyledProduct = styled.div`
             filter: brightness(0.7);
         }
     }
+
+    @media (max-width: 700px) {
+        gap: 5px;
+        img {
+            max-width: 8rem;
+        }
+        .title {
+            font-size: 1.2rem;
+        }
+        .description {
+            font-size: 0.8rem;
+        }
+        .price {
+            font-size: 1.2rem;
+        }
+    }
 `

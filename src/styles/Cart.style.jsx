@@ -30,4 +30,13 @@ export const StyledCart = styled.section`
             filter: brightness(0.7);
         }
     }
+
+    @media (max-width: 700px) {
+        padding: 5px;
+        a {
+            margin-left: 1rem;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+    }
 `

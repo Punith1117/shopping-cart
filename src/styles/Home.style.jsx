@@ -29,4 +29,16 @@ export const StyledHome = styled.section`
         border-radius: 2rem;
         padding: 1rem;
     }
+
+    @media (max-width: 700px) {
+        .brand-name {
+            font-size: 3rem;
+        }
+        h2 {
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1.5rem;
+        }
+    }
 `
