@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import { Outlet } from 'react-router-dom'
 import { StyledApp } from './styles/App.style'
+import Author from './Author'
 
 function App() {
   const [products, setProducts] = useState(null)
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <StyledApp>
+      <Author />
       <Sidebar />
       <Outlet context={{products, cart, isInCart, addToCart, removeFromCart}} />
     </StyledApp>
