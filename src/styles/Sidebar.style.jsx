@@ -21,4 +21,9 @@ export const StyledSidebar = styled.section`
     .active-tab {
         background-color: #e9c345;
     }
+
+    @media (max-width: 700px) {
+        flex-direction: row;
+        height: fit-content;
+    }
 `
