@@ -1,6 +1,12 @@
+import { StyledErrorPage } from "./styles/ErrorPage.style"
+
 function ErrorPage() {
     return (
-        <section className="error-page">Sorry :( This page doesn't exist</section>
+        <StyledErrorPage className="error-page">
+            <div className="error-message">
+                Sorry :( This page doesn't exist
+            </div>
+        </StyledErrorPage>
     )
 }
 
