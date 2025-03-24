@@ -9,7 +9,8 @@ export const StyledSidebar = styled.section`
     gap: 2rem;
     background-color: #5C899D;
     padding: 5px;
-
+    position: sticky;
+    top: 0px;
     a {
         width: 100%;
         background-color: #F2DE9B;
