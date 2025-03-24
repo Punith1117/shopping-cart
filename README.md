@@ -1,12 +1,29 @@
-# React + Vite
+Project17 in The Odin Project
+# Shopping Cart Project 🛒
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### This is a Single Page Application (SPA) shopping cart built with React and React Router DOM. The project is styled using Styled-components and tested with Vitest and React Testing Library. It is deployed on Netlify.
 
-Currently, two official plugins are available:
+## Features 🚀
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Routing with React Router DOM
+- Implemented route objects for better structure.
+- Used Link, NavLink for seamless navigation and Outlet tag for child components.
+- Added errorElement to handle route errors gracefully.
+- Managed cart state efficiently.
+- Implemented item addition and removal functionality.
+- Styling with styled-components
+- Created reusable styled components for modular design.
+- Testing with Vitest & React Testing Library
+- Wrote unit and integration tests for key components.
+- Ensured UI behavior through interaction-based testing.
+- Hosted on Netlify with _redirects file for SPA support.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack 🏗️
+
+- React (Vite)
+- React Router DOM
+- styled-components
+- Vitest & React Testing Library
+- Netlify
+
